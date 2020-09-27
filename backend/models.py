@@ -3,8 +3,10 @@ from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 
+db_test_user = 'postgres'
+db_password = 'root'
 database_name = "trivia"
-database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+database_path = "postgres://{}:{}@{}/{}".format(db_test_user, db_password,'localhost:5432', database_name)
 
 db = SQLAlchemy()
 
@@ -23,7 +25,7 @@ def setup_db(app, database_path=database_path):
 Question
 
 '''
-class Question(db.Model):  
+class Question(db.Model):
   __tablename__ = 'questions'
 
   id = Column(Integer, primary_key=True)
@@ -48,6 +50,9 @@ class Question(db.Model):
   def delete(self):
     db.session.delete(self)
     db.session.commit()
+
+  def rollback(self):
+    db.session.rollback()
 
   def format(self):
     return {
