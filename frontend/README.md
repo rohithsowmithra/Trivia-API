@@ -26,7 +26,7 @@ npm install
 
 The frontend app was built using create-react-app. In order to run the app in development mode use ```npm start```. You can change the script in the ```package.json``` file. 
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload whenever edits are made.<br>
 
 ```bash
 npm start
