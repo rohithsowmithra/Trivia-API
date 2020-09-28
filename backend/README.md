@@ -143,14 +143,14 @@ DELETE '/questions/<question_id>'
 
 POST '/questions'
 - Creates a new question in the database
-- Request Body: {"question": string,"answer": string,"difficulty": string,"category": String}
+- Request Body: {"question": string,"answer": string,"difficulty": int,"category": int}
 - Sample request:
 ```
 {
 	"question": "Your Question",
 	"answer": "Your Answer",
-	"difficulty": "1",
-	"category": "1"
+	"difficulty": 1,
+	"category": 1
 }
 ```
 - Sample response:

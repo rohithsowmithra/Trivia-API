@@ -23,5 +23,5 @@ This project uses Flask to build the apis. To start off with backend, install th
 
 ## Authors
 
-Rohith has authored the API (__init__.py) and test suite (test_flaskr.py). All other project files were created by Udacity. Made some changes to these files to ensure smoother interaction of frontend with backend. 
+Rohith has authored the APIs (__init__.py) and test suite (test_flaskr.py) and documentation (Readme.md). All other project files were created by Udacity. Made some changes to these files to ensure frontend interacts with backend. 
 

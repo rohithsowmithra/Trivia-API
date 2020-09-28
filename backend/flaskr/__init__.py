@@ -100,7 +100,6 @@ def create_app(test_config=None):
   def delete_question(question_id):
 
     try:
-      #question_obj = Question.query.get(question_id)
       question_obj = Question.query.filter(Question.id == question_id).one()
       print(question_obj.format())
       question_obj.delete()
@@ -189,13 +188,20 @@ def create_app(test_config=None):
   def retrieve_questions_by_category(category_id):
 
     try:
+
+      category_ids = [cat.id for cat in Category.query.with_entities(Category.id, Category.type).order_by(Category.id).all()]
+
+      if category_id not in category_ids:
+        abort(404)
+
       questions_obj = Question.query.filter(Question.category == str(category_id)).all()
       current_questions = paginate_questions(request, questions_obj)
+
 
       return jsonify({
         "success": True,
         "questions": current_questions,
-        "totalQuestions": len(questions_obj),
+        "total_questions": len(questions_obj),
         "currentCategory": category_id
       })
     except:
@@ -262,7 +268,7 @@ def create_app(test_config=None):
   def unprocessable(error):
     return jsonify({
       "success": False,
-      "error": 404,
+      "error": 422,
       "message": "unprocessable"
     }), 422
 
