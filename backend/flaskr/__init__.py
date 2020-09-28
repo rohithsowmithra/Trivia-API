@@ -32,7 +32,7 @@ def create_app(test_config=None):
   '''
   Set up CORS. Allow '*' for origins.
   '''
-  cors = CORS(app, resources={r"/.*": {"origins":"*"}})
+  CORS(app, resources={r"/.*": {"origins":"*"}})
 
 
   '''
